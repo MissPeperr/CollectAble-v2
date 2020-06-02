@@ -15,7 +15,7 @@ export const UserProvider = (props) => {
         return firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 // this is the setUser function
-                callback({ loggedIn: true, email: user.email });
+                callback({ loggedIn: true, email: user.email, uid: user.uid });
             } else {
                 callback({ loggedIn: false });
             }
