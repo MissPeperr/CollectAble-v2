@@ -6,6 +6,8 @@ import firebase from 'firebase/app'
 import 'firebase/auth';
 import './services/firestore'
 import './components/login/login.css'
+import CollectionList from './components/collection/CollectionList';
+import { CollectionProvider } from './providers/CollectionProvider';
 
 const App = () => {
   const [error, setError] = useState("");
@@ -42,7 +44,12 @@ const App = () => {
     )
   }
   return (
-    <LogoutView onClick={requestLogout} />
+    <>
+      <LogoutView onClick={requestLogout} />
+      <CollectionProvider>
+          <CollectionList />
+      </CollectionProvider>
+    </>
   );
 }
 
