@@ -1,15 +1,17 @@
 import React, { useCallback, useContext, useState } from 'react';
 import { UserContext } from './providers/UserProvider'
 import { LoginView, LogoutView } from './components/login/Login'
+import Register from './components/login/Register';
 import firebase from 'firebase/app'
 import 'firebase/auth';
 import './services/firestore'
+import './components/login/login.css'
 
 const App = () => {
   const [error, setError] = useState("");
   const { user } = useContext(UserContext)
 
-  function login(username, password) {
+  const login = (username, password) => {
     return new Promise((resolve, reject) => {
       firebase
         .auth()
@@ -32,10 +34,15 @@ const App = () => {
   }, []);
 
   if (!user.loggedIn) {
-    return <LoginView onClick={requestLogin} error={error} />;
+    return (
+      <>
+        <LoginView onClick={requestLogin} error={error} />
+        <Register />
+      </>
+    )
   }
   return (
-      <LogoutView onClick={requestLogout} />
+    <LogoutView onClick={requestLogout} />
   );
 }
 

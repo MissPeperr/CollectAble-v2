@@ -26,9 +26,6 @@ export const UserProvider = (props) => {
     useEffect(() => {
         // we can bring the data from the auth provider changes to our user state by connecting our setUser hook as a callback to our onAuthStateChange function
         onAuthStateChange(setUser);
-        // return () => {
-        //     unsubscribe();
-        // }
     }, []);
 
     return (

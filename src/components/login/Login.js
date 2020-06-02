@@ -5,7 +5,7 @@ export const LoginView = ({ onClick }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     return (
-      <div>
+      <div className="login">
         <input
           onChange={event => {
             setUsername(event.target.value);
